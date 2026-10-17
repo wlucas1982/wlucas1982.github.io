@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Hotels with EV Chargers</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #f4f7f6; }
+        h1 { color: #1e3a8a; }
+        .search-box { width: 100%; padding: 12px; font-size: 16px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 6px; }
+        .hotel-card { background: white; padding: 20px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .hotel-name { font-size: 18px; font-weight: bold; margin: 0 0 5px 0; color: #111827; }
+        .tag { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 4px 8px; font-size: 12px; border-radius: 4px; margin-right: 5px; font-weight: bold; }
+        .cta-btn { display: inline-block; background: #059669; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; margin-top: 10px; font-weight: bold; }
+        .cta-btn:hover { background: #047857; }
+    </style>
+</head>
+<body>
+
+    <h1>⚡ EV Hotel Finder US</h1>
+    <p>Find verified overnight charging for your electric vehicle.</p>
+    
+    <!-- Search Bar -->
+    <input type="text" id="searchInput" class="search-box" placeholder="Search by city, state, or charger type (e.g., California, Tesla)..." onkeyup="filterHotels()">
+
+    <!-- Directory Listings -->
+    <div id="hotelList">
+        <div class="hotel-card" data-tags="california la luxury tesla free">
+            <div class="hotel-name">The Beverly Hills Hotel</div>
+            <span class="tag">California</span><span class="tag">Tesla Destination (Free)</span>
+            <p>Iconic luxury hotel offering free level 2 charging to overnight guests via valet parking.</p>
+            <a href="YOUR_AFFILIATE_LINK_HERE" class="cta-btn" target="_blank">Book Stay & Verify Charging</a>
+        </div>
+
+        <div class="hotel-card" data-tags="colorado denver chargepoint paid">
+            <div class="hotel-name">Grand Hyatt Denver</div>
+            <span class="tag">Colorado</span><span class="tag">ChargePoint Network (Paid)</span>
+            <p>Convenient downtown location featuring 4 ChargePoint ports located in the secure guest parking garage.</p>
+            <a href="YOUR_AFFILIATE_LINK_HERE" class="cta-btn" target="_blank">Book Stay & Verify Charging</a>
+        </div>
+    </div>
+
+    <!-- AI/JavaScript Search Functionality -->
+    <script>
+        function filterHotels() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('hotel-card');
+            
+            for (let i = 0; i < cards.length; i++) {
+                let tags = cards[i].getAttribute('data-tags').toLowerCase();
+                let name = cards[i].querySelector('.hotel-name').innerText.toLowerCase();
+                
+                if (tags.includes(input) || name.includes(input)) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
